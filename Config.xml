@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Config>
+
+  <!-- _______プログラム情報_______ -->
+  <!-- プログラム名 -->
+  <ProgramName>MySystem</ProgramName>
+
+  <!-- バージョン -->
+  <Version>ver.1.0.0.0</Version>
+
+  <!-- 最終更新日 -->
+  <LastUpDate>2021/03/09</LastUpDate>
+
+
+  <!-- _______SQLServer接続情報_______ -->
+  <!-- ServerName IPアドレスで設定 -->
+  <ServerName>1000</ServerName>
+
+  <!-- LoginUser -->
+  <LoginUser>hoge</LoginUser>
+
+  <!-- LoginPassword -->
+  <LoginPassword>hoge</LoginPassword>
+
+  <!-- DBName -->
+  <DBName>hogeDB</DBName>
+
+  <!-- _______ユーザーパラメータ_______ -->
+  <!-- UserID -->
+  <UserID>0001</UserID>
+
+  <!-- UserName -->
+  <UserName>hogeTaro</UserName>
+  
+  
+
+
+</Config>
+
