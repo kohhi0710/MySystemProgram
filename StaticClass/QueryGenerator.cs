@@ -41,6 +41,7 @@ namespace t
         {
             _Query = "";
             _select = init1(_select, AddCommand);
+            _Query = _select;
         }
 
         /// <summary>
@@ -48,10 +49,11 @@ namespace t
         /// </summary>
         /// <param name="Value">初期値 csv形式の場合は区切って初期値に設定される</param>
         /// <param name="AddCommand">追加コマンド</param>
-        public CreateQuery_SELECT(string Value, string AddCommand = "")
+        /// <param name="CommaSplit">文字列をコンマ区切りするかどうか　true:YES false:NO  初期値true</param>
+        public CreateQuery_SELECT(string Value, string AddCommand = "", bool CommaSplit = true)
         {
             _Query = "";
-            _Query = init2(_Query,_select,Value,AddCommand);
+            _Query = init2(_Query,_select,Value,AddCommand, CommaSplit);
         }
 
         /// <summary>
@@ -71,7 +73,7 @@ namespace t
         /// <param name="Value"></param>
         public void AddQuery(string Value)
         {
-            if (_Query == "")
+            if (_Query == "" ^ _Query == _select)
                 _Query = _select + Environment.NewLine + " " + Value + " ";
             else
                 _Query = _Query + Environment.NewLine + "," + Value + " ";
@@ -94,6 +96,7 @@ namespace t
         {
             _Query = "";
             _from = init1(_from, AddCommand);
+            _Query = _from;
         }
 
         /// <summary>
@@ -101,10 +104,11 @@ namespace t
         /// </summary>
         /// <param name="Value">初期値 csv形式の場合は区切って初期値に設定される</param>
         /// <param name="AddCommand">追加コマンド</param>
-        public CreateQuery_FROM(string Value, string AddCommand = "")
+        /// <param name="CommaSplit">文字列をコンマ区切りするかどうか　true:YES false:NO  初期値true</param>
+        public CreateQuery_FROM(string Value, string AddCommand = "", bool CommaSplit = true)
         {
             _Query = "";
-            _Query = init2(_Query, _from, Value, AddCommand);
+            _Query = init2(_Query, _from, Value, AddCommand, CommaSplit);
         }
 
         /// <summary>
@@ -124,7 +128,7 @@ namespace t
         /// <param name="Value"></param>
         public void AddQuery(string Value)
         {
-            if (_Query == "")
+            if (_Query == "" ^ _Query == _from)
                 _Query = _from + Environment.NewLine + " " + Value + " ";
             else
                 _Query = _Query + Environment.NewLine + "," + Value + " ";
@@ -147,6 +151,7 @@ namespace t
         {
             _Query = "";
             _insert = init1(_insert, AddCommand);
+            _Query = _insert;
         }
 
         /// <summary>
@@ -154,10 +159,11 @@ namespace t
         /// </summary>
         /// <param name="Value">初期値 csv形式の場合は区切って初期値に設定される</param>
         /// <param name="AddCommand">追加コマンド</param>
-        public CreateQuery_INSERT(string Value,string AddCommand = "")
+        /// <param name="CommaSplit">文字列をコンマ区切りするかどうか　true:YES false:NO  初期値true</param>
+        public CreateQuery_INSERT(string Value,string AddCommand = "",bool CommaSplit = true)
         {
             _Query = "";
-            _Query = init2(_Query, _insert, Value, AddCommand);
+            _Query = init2(_Query, _insert, Value, AddCommand, CommaSplit);
         }
 
         /// <summary>
@@ -177,7 +183,7 @@ namespace t
         /// <param name="Value"></param>
         public void AddQuery(string Value)
         {
-            if (_Query == "")
+            if (_Query == "" ^ _Query == _insert)
                 _Query = _insert + Environment.NewLine + " " + Value + " ";
             else
                 _Query = _Query + Environment.NewLine + "," + Value + " ";
@@ -200,6 +206,7 @@ namespace t
         {
             _Query = "";
             _update = init1(_update, AddCommand);
+            _Query = _update;
         }
 
         /// <summary>
@@ -207,10 +214,11 @@ namespace t
         /// </summary>
         /// <param name="Value">初期値 csv形式の場合は区切って初期値に設定される</param>
         /// <param name="AddCommand">追加コマンド</param>
-        public CreateQuery_UPDATE(string Value, string AddCommand = "")
+        /// <param name="CommaSplit">文字列をコンマ区切りするかどうか　true:YES false:NO  初期値true</param>
+        public CreateQuery_UPDATE(string Value, string AddCommand = "", bool CommaSplit = true)
         {
             _Query = "";
-            _Query = init2(_Query, _update, Value, AddCommand);
+            _Query = init2(_Query, _update, Value, AddCommand, CommaSplit);
         }
 
         /// <summary>
@@ -230,7 +238,7 @@ namespace t
         /// <param name="Value"></param>
         public void AddQuery(string Value)
         {
-            if (_Query == "")
+            if (_Query == "" ^ _Query == _update)
                 _Query = _update + Environment.NewLine + " " + Value + " ";
             else
                 _Query = _Query + Environment.NewLine + "," + Value + " ";
@@ -253,6 +261,7 @@ namespace t
         {
             _Query = "";
             _where = init1(_where, AddCommand);
+            _Query = _where;
         }
 
         /// <summary>
@@ -260,10 +269,11 @@ namespace t
         /// </summary>
         /// <param name="Value">初期値 csv形式の場合は区切って初期値に設定される</param>
         /// <param name="AddCommand">追加コマンド</param>
-        public CreateQuery_WHERE(string Value, string AddCommand = "")
+        /// <param name="CommaSplit">文字列をコンマ区切りするかどうか　true:YES false:NO  初期値true</param>
+        public CreateQuery_WHERE(string Value, string AddCommand = "", bool CommaSplit = true)
         {
             _Query = "";
-            _Query = init2(_Query, _where, Value, AddCommand);
+            _Query = init2(_Query, _where, Value, AddCommand, CommaSplit);
         }
 
         /// <summary>
@@ -283,7 +293,7 @@ namespace t
         /// <param name="Value"></param>
         public void AddQuery(string Value)
         {
-            if (_Query == "")
+            if (_Query == "" ^ _Query == _where)
                 _Query = _where + Environment.NewLine + " " + Value + " ";
             else
                 _Query = _Query + Environment.NewLine + "," + Value + " ";
@@ -306,6 +316,7 @@ namespace t
         {
             _Query = "";
             _order_by = init1(_order_by, AddCommand);
+            _Query = _order_by;
         }
 
         /// <summary>
@@ -313,10 +324,11 @@ namespace t
         /// </summary>
         /// <param name="Value">初期値 csv形式の場合は区切って初期値に設定される</param>
         /// <param name="AddCommand">追加コマンド</param>
-        public CreateQuery_ORDER_BY(string Value, string AddCommand = "")
+        /// <param name="CommaSplit">文字列をコンマ区切りするかどうか　true:YES false:NO  初期値true</param>
+        public CreateQuery_ORDER_BY(string Value, string AddCommand = "", bool CommaSplit = true)
         {
             _Query = "";
-            _Query = init2(_Query, _order_by, Value, AddCommand);
+            _Query = init2(_Query, _order_by, Value, AddCommand, CommaSplit);
         }
 
         /// <summary>
@@ -336,7 +348,7 @@ namespace t
         /// <param name="Value"></param>
         public void AddQuery(string Value)
         {
-            if (_Query == "")
+            if (_Query == "" ^ _Query == _order_by)
                 _Query = _order_by + Environment.NewLine + " " + Value + " ";
             else
                 _Query = _Query + Environment.NewLine + "," + Value + " ";
@@ -359,6 +371,7 @@ namespace t
         {
             _Query = "";
             _left_join = init1(_left_join, AddCommand);
+            _Query = _left_join;
         }
 
         /// <summary>
@@ -366,10 +379,11 @@ namespace t
         /// </summary>
         /// <param name = "Value" > 初期値 csv形式の場合は区切って初期値に設定される</param>
         /// <param name = "AddCommand" > 追加コマンド </ param >
-        public CreateQuery_LEFT_JOIN(string Value, string AddCommand = "")
+        /// <param name="CommaSplit">文字列をコンマ区切りするかどうか　true:YES false:NO  初期値true</param>
+        public CreateQuery_LEFT_JOIN(string Value, string AddCommand = "", bool CommaSplit = true)
         {
             _Query = "";
-            _Query = init2(_Query, _left_join, Value, AddCommand);
+            _Query = init2(_Query, _left_join, Value, AddCommand, CommaSplit);
         }
 
         /// <summary>
@@ -377,6 +391,7 @@ namespace t
         /// </summary>
         /// <param name = "List" > 初期値 </ param >
         /// < param name="AddCommand">追加コマンド</param>
+        /// <param name="CommaSplit">文字列をコンマ区切りするかどうか　true:YES false:NO  初期値true</param>
         public CreateQuery_LEFT_JOIN(List<string> List, string AddCommand = "")
         {
             _Query = "";
@@ -389,7 +404,7 @@ namespace t
         /// <param name = "Value" ></ param >
         public void AddQuery(string Value)
         {
-            if (_Query == "")
+            if (_Query == "" ^ _Query == _left_join)
                 _Query = _left_join + Environment.NewLine + " " + Value + " ";
             else
                 _Query = _Query + Environment.NewLine + "," + Value + " ";
@@ -412,6 +427,7 @@ namespace t
         {
             _Query = "";
             _right_join = init1(_right_join, AddCommand);
+            _Query = _right_join;
         }
 
         /// <summary>
@@ -419,10 +435,11 @@ namespace t
         /// </summary>
         /// <param name="Value">初期値 csv形式の場合は区切って初期値に設定される</param>
         /// <param name="AddCommand">追加コマンド</param>
-        public CreateQuery_RIGHT_JOIN(string Value, string AddCommand = "")
+        /// <param name="CommaSplit">文字列をコンマ区切りするかどうか　true:YES false:NO  初期値true</param>
+        public CreateQuery_RIGHT_JOIN(string Value, string AddCommand = "", bool CommaSplit = true)
         {
             _Query = "";
-            _Query = init2(_Query, _right_join, Value, AddCommand);
+            _Query = init2(_Query, _right_join, Value, AddCommand, CommaSplit);
         }
 
         /// <summary>
@@ -442,7 +459,7 @@ namespace t
         /// <param name="Value"></param>
         public void AddQuery(string Value)
         {
-            if (_Query == "")
+            if (_Query == "" ^ _Query == _right_join)
                 _Query = _right_join + Environment.NewLine + " " + Value + " ";
             else
                 _Query = _Query + Environment.NewLine + "," + Value + " ";
@@ -466,7 +483,8 @@ namespace t
         {
             _MainCommand = MainCommand + " ";
             _Query = "";
-            _MainCommand = init1(MainCommand, AddCommand);
+            _MainCommand = init1(_MainCommand, AddCommand);
+            _Query = _MainCommand;
         }
 
         /// <summary>
@@ -475,11 +493,12 @@ namespace t
         /// <param name="MainCommand">コマンド指定</param>
         /// <param name="Value">初期値 csv形式の場合は区切って初期値に設定される</param>
         /// <param name="AddCommand">追加コマンド</param>
-        public CreateQuery_Command(string MainCommand,string Value, string AddCommand = "")
+        /// <param name="CommaSplit">文字列をコンマ区切りするかどうか　true:YES false:NO  初期値true</param>
+        public CreateQuery_Command(string MainCommand,string Value, string AddCommand = "",bool CommaSplit = true)
         {
             _MainCommand = MainCommand + " ";
             _Query = "";
-            _Query = init2(_Query, _MainCommand, Value, AddCommand);
+            _Query = init2(_Query, _MainCommand, Value, AddCommand,CommaSplit);
         }
 
         /// <summary>
@@ -501,7 +520,7 @@ namespace t
         /// <param name="Value"></param>
         public void AddQuery(string Value)
         {
-            if (_Query == "")
+            if (_Query == "" ^ _Query == _MainCommand)
                 _Query = _MainCommand + Environment.NewLine + " " + Value + " ";
             else
                 _Query = _Query + Environment.NewLine + "," + Value + " ";
@@ -519,26 +538,36 @@ public static class CreateQueryClass_Constructor
         return MainCommand + AddCommand + " ";
     }
 
-    public static string init2(string _Query, string MainCommand, string Value, string AddCommand = "")
+    public static string init2(string _Query, string MainCommand, string Value, string AddCommand = "", bool CommaSplit = true)
     {
-        var SplitValue = Value.Split(Convert.ToChar(","));
+        if(CommaSplit)
+        {
+            var SplitValue = Value.Split(Convert.ToChar(","));
 
-        if (SplitValue.Length == 0)
+            if (SplitValue.Length == 0)
+            {
+                if (_Query == "")
+                    _Query = MainCommand + AddCommand + Environment.NewLine + " " + Value + " ";
+                else
+                    _Query = _Query + Environment.NewLine + "," + Value + " ";
+            }
+            else
+            {
+                foreach (var item in SplitValue)
+                {
+                    if (_Query == "")
+                        _Query = MainCommand + AddCommand + Environment.NewLine + " " + item + " ";
+                    else
+                        _Query = _Query + Environment.NewLine + "," + item + " ";
+                }
+            }
+        }
+        else
         {
             if (_Query == "")
                 _Query = MainCommand + AddCommand + Environment.NewLine + " " + Value + " ";
             else
                 _Query = _Query + Environment.NewLine + "," + Value + " ";
-        }
-        else
-        {
-            foreach (var item in SplitValue)
-            {
-                if (_Query == "")
-                    _Query = MainCommand + AddCommand + Environment.NewLine + " " + item + " ";
-                else
-                    _Query = _Query + Environment.NewLine + "," + item + " ";
-            }
         }
 
         return _Query;
