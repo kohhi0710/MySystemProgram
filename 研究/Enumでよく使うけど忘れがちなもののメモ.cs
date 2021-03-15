@@ -24,7 +24,7 @@ namespace t
             Winter
         };
 
-        public static void Main()
+        public static void Main_Enum()
         {
             //使い方サンプル
             var season = Seasons.Spring;
