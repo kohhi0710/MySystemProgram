@@ -35,7 +35,7 @@ namespace t
             //URLデコードする
             string URLDec = System.Web.HttpUtility.UrlDecode(JsonData);
             //JSON文字列をデシリアライズ
-            Root TrendDat = JsonConvert.DeserializeObject<Root>(URLDec);
+            Root TrendData = JsonConvert.DeserializeObject<Root>(URLDec);
 
             //練習数
             int DataCount = 3;
@@ -45,7 +45,28 @@ namespace t
             //1秒待つ
             Thread.Sleep(1000);
 
+            for(int i = 0; i < DataCount; i++)
+            {
+                //取得トレンド総数
+                int TrendCnt = TrendData._Json_Data[0]._Trends.Count;
 
+                //ランダム値
+                Random Rnd = new Random();
+                int TrendRdm = Rnd.Next(0, TrendCnt);
+
+                //トレンド文字列取得
+                string TrendText = TrendData._Json_Data[0]._Trends[TrendRdm]._Query;
+                //#はいらないので置換
+                TrendText = TrendText.Replace("#", "");
+
+                //ツイート
+                Tokens.Statuses.Update(status => "【" + (i + 1) + "】" + TrendText);
+                //1秒待つ
+                Thread.Sleep(1000);
+            }
+
+            //ツイート
+            Tokens.Statuses.Update(status => "終了");
         }
     }
 
@@ -77,6 +98,4 @@ namespace t
     {
         public List<JsonData> _Json_Data { get; set; }
     }
-
-
 }
