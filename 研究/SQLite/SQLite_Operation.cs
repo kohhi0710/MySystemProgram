@@ -253,6 +253,9 @@ namespace t
             }
         }
 
+        /// <summary>
+        /// トランザクションロールバック
+        /// </summary>
         public void RollBackTransaction()
         {
             try
