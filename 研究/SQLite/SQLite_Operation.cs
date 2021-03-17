@@ -320,7 +320,30 @@ namespace t
             {
                 sqlite.RollBackTransaction();
                 sqlite.CloseDatabase();
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);　//ログを出す(暫定的にコンソール出力)
+            }
+        }
+
+        public void MainProgram2()
+        {
+            var sqlite = new SQLite_Operation(System.AppDomain.CurrentDomain.BaseDirectory + "TestDataBase.db");
+
+            try
+            {
+                sqlite.OpenDatabase();
+
+                sqlite.SelectQueryExecution("select * from Sample");
+                while (sqlite._Reader.Read())
+                {
+                    Console.WriteLine(sqlite._Reader["ID"].ToString() + "," + sqlite._Reader["Name"].ToString());
+                }
+
+                sqlite.CloseDatabase();
+            }
+            catch (Exception ex)
+            {
+                sqlite.CloseDatabase();
+                Console.WriteLine(ex.Message);　//ログを出す(暫定的にコンソール出力)
             }
         }
     }
