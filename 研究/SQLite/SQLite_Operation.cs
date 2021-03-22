@@ -120,7 +120,8 @@ namespace t
                 }
                 catch (Exception ex)
                 {
-                    if (ex.Message != "SQL logic error\r\ntable Sample already exists")
+                    string ExMsg = "SQL logic error\r\ntable " + TableName + " already exists";
+                    if (ex.Message != ExMsg)
                         throw ex;
                 }
             }
